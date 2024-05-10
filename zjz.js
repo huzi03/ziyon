@@ -30,7 +30,5 @@ obj.data.is_vip = 1;
 obj.data.is_permanent_vip = 1;
 obj.data.vip_end_time = "2099-09-09 09:09:09";
 
-// 修改响应体中的提示信息
-obj.msg = "request success, VIP user";
 
 $done({body: JSON.stringify(obj)});
