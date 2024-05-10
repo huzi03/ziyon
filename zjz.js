@@ -7,7 +7,7 @@
 电报频道：https://t.me/your_telegram_channel
 使用声明：⚠️仅供参考，🈲转载与售卖！
 
-**************************************/
+**************************************
 
 [rewrite_local]
 ^https://zhengjian\.flyingeffect\.com/api/user/userInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/main/zjz.js
@@ -15,7 +15,7 @@
 [mitm]
 hostname = zhengjian.flyingeffect.com
 
-/************************************/
+/************************************
 
 
 /************************************/
