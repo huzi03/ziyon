@@ -10,7 +10,7 @@
 **************************************/
 
 [rewrite_local]
-^https://zhengjian\.flyingeffect\.com/api/user/userInfo url script-response-body flyingeffect_vip.js
+^https://zhengjian\.flyingeffect\.com/api/user/userInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/main/zjz.js
 
 [mitm]
 hostname = zhengjian.flyingeffect.com
