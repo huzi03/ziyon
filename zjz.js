@@ -13,6 +13,7 @@ let obj = JSON.parse(body);
 
 obj.data.is_vip = 1;
 obj.data.vip_end_time = "2099-05-10 13:17:31";
+obj.data.permanent_vip = 1;
 
 // 修改后的响应体 JSON
 body = JSON.stringify(obj);
