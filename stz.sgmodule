@@ -1,0 +1,5 @@
+[Script]
+stz = type=http-response,pattern=^https://.*\.steezy\.co/graphql$,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/huzi03/ziyon/main/stz.js
+
+[MITM]
+hostname = *.steezy.co
