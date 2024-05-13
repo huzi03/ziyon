@@ -1,5 +1,5 @@
 [Script]
-stz = type=http-response,pattern=^https://.*\.steezy\.co/graphql$,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/huzi03/ziyon/main/stz.js
+解锁= type=http-response,requires-body=1,max-size=0,pattern=^https://.*\.steezy\.co/graphql$,script-path=https://raw.githubusercontent.com/huzi03/ziyon/main/stz.js
 
 [MITM]
 hostname = *.steezy.co
