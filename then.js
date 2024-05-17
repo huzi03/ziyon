@@ -10,12 +10,10 @@
 [mitm]
 hostname = api.revenuecat.com
 
-/************************************/
 
 
 /************************************/
 
-// revenuecat_replace.js
 
 var response = {
     "request_date": "2024-03-30T13:38:38Z",
