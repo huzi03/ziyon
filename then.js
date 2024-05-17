@@ -23,10 +23,10 @@ var response = {
     "subscriber": {
         "entitlements": {
             "thenx_membership_entitlement": {
-                "expires_date": "2024-04-30T13:37:29Z",
+                "expires_date": "2099-04-30T13:37:29Z",
                 "grace_period_expires_date": null,
                 "product_identifier": "com.thenx.subscription",
-                "purchase_date": "2024-03-30T13:37:29Z"
+                "purchase_date": "2024-05-30T13:37:29Z"
             }
         },
         "first_seen": "2024-03-30T13:37:04Z",
