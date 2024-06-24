@@ -8,7 +8,7 @@ peiy
 ^https:\/\/api\.next\.bspapp\.com\/client url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/main/peiy.js
 
 [mitm]
-hostname = api.next.bspapp.com
+hostname = *.bspapp.com
 
 *************************************/
 let response = JSON.parse($response.body);
