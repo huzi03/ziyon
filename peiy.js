@@ -15,9 +15,10 @@ hostname = api.next.bspapp.com
 var body = $response.body;
 var obj = JSON.parse(body);
 
-obj.endtime = 9999999999000;
-obj.level = 6;
-obj.todaySigned = 999;
-obj.Exchanged = 999;
+// 修改内容
+if (obj.endtime !== undefined) obj.endtime = 9999999999000;          // 修改endtime
+if (obj.level !== undefined) obj.level = 6;                          // 修改level
+if (obj.todaySigned !== undefined) obj.todaySigned = 999;            // 修改todaySigned
+if (obj.Exchanged !== undefined) obj.Exchanged = 999;                // 修改Exchanged
 
 $done({body: JSON.stringify(obj)});
