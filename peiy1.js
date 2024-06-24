@@ -11,17 +11,13 @@ peiy
 hostname = api.next.bspapp.com
 
 *************************************/
-var body = $response.body;
-var obj = JSON.parse(body);
+let response = JSON.parse($response.body);
 
-// 确保字段存在并进行修改
-if (obj.data && obj.data.userInfo) {
-    obj.data.userInfo.vip_endtime = 9999999999000;            // 修改vip_endtime
-    obj.data.userInfo.vip_level = '6';                        // 修改vip_level
-    obj.data.userInfo.todaySigned = 999;                      // 修改todaySigned
-    obj.data.userInfo.oneMonthExchanged = 999;                // 修改oneMonthExchanged
-    obj.data.userInfo.oneYearExchanged = 999;                 // 修改oneYearExchanged
-}
+response.endtime = 99999999999000;
+response.level = 6;
+response.todaySigned = 999;
+response.Exchanged = 999;
 
-$done({body: JSON.stringify(obj)});
+$done({ body: JSON.stringify(response) });
+
 
