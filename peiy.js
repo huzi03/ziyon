@@ -12,13 +12,12 @@ hostname = api.next.bspapp.com
 
 *************************************/
 
-var body = $response.body;
-var obj = JSON.parse(body);
+let response = JSON.parse($response.body);
 
-// 修改内容
-if (obj.endtime !== undefined) obj.endtime = 9999999999000;          // 修改endtime
-if (obj.level !== undefined) obj.level = 6;                          // 修改level
-if (obj.todaySigned !== undefined) obj.todaySigned = 999;            // 修改todaySigned
-if (obj.Exchanged !== undefined) obj.Exchanged = 999;                // 修改Exchanged
+response.endtime = 99999999999000;
+response.level = 6;
+response.todaySigned = 999;
+response.Exchanged = 999;
 
-$done({body: JSON.stringify(obj)});
+$done({ body: JSON.stringify(response) });
+
