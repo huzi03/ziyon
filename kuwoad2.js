@@ -1,7 +1,7 @@
 /*************************************
 [rewrite_local]
 # 匹配 Kuwo 特定 URL 并修改返回内容
-^http://mobilead\.kuwo\.cn/EcomResourceServer/getIOSIsHideAd\.do\?plat=ip.*$ url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/main/kuwoad.js
+^http://mobilead\.kuwo\.cn/EcomResourceServer/getIOSIsHideAd\.do\?plat=ip.*$ url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/main/kuwoad2.js
 
 [mitm]
 hostname = mobilead.kuwo.cn
