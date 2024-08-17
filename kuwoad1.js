@@ -90,4 +90,9 @@ if (response.adArtistConfig) delete response.adArtistConfig;
 if (response.contact) delete response.contact;
 if (response.commentFontColor) delete response.commentFontColor;
 
+// 过滤掉特定标题的板块
+if (response.homeTop) {
+    response.homeTop = response.homeTop.filter(item => !["听书", "儿童", "演出季"].includes(item.title));
+}
+
 $done({ body: JSON.stringify(response) });
