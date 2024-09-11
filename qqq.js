@@ -1,8 +1,8 @@
 /*
  * Q
- * 修
+ * 通
 [rewrite_local]
-^https:\/\/cajcloud\.cnki\.net\/mcnkims\/users\/iplogin url script-request-header https://raw.githubusercontent.com/huzi03/ziyon/main/qqq.js
+^https?:\/\/(.*\.)?cnki\.net\/ url script-request-header https://raw.githubusercontent.com/huzi03/ziyon/main/qqq.js
 
 */
 
