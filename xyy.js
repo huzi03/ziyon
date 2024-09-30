@@ -1,7 +1,7 @@
 /*************************************
 [rewrite_local]
 # 匹配 `htx.jietuguanjia.com` 的特定 API 并修改响应内容
-http://htx.jietuguanjia.com/api/app/userInfo url script-response-body xyy.js
+http://htx.jietuguanjia.com/api/app/userInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/xyy.js
 
 [mitm]
 hostname = htx.jietuguanjia.com
