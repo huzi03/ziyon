@@ -1,8 +1,11 @@
-#!url=https://raw.githubusercontent.com/chmg2025/js/refs/heads/main/kwcjb.js
+#!name=酷我音乐纯净版会员
+#!desc=酷我音乐会员解锁
+#!author=yingzi
+#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/kuwosvip.png
+#!homepage=https://whatshub.top
+
 [Script]
-会员 = type=http-response,pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/user\/vip$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chmg2025/js/refs/heads/main/kwcjb.js
-下载 = type=http-response,pattern=^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?newver=3$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chmg2025/js/refs/heads/main/kwcjb.js
-播放 = type=http-request,pattern=^https?:\/\/nmobi\.kuwo\.cn\/mobi\.s\?f=kuwo&q=.*$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chmg2025/js/refs/heads/main/kwcjb.js
+酷我音乐 = type=http-response, pattern=^(?!.*img).*?kuwo\.cn(/vip|/openapi)?(/enc|/audi.tion|/v[\d]/(user/vip\?(vers|apiVersion|platform|op\=ui|_t)|theme\?op=gd|sysinfo\?op=getRePayAndDoPayBoxNew|api(/pay)?/((user/personal/)?user/info|payInfo/kwplayer/payMiniBar|advert/(myPage|iListen|album))|album/(adBar|myRec/vipMusic))|/kuwopay/vip-tab/setting|/(audioApi/)?a\.p($|\?op\=getvip|.*?ptype\=vip)|/mobi\.s\?f\=kwxs|/music\.pay\?newver\=3$|/(EcomResource|(Mobile)?Ad)Serv(er|ice)), script-path=https://kw.sub-domain.workers.dev/kw.js, requires-body=true, timeout=60
 
 [MITM]
-hostname = *.kuwo.cn
+hostname = %APPEND% *.kuwo.cn
