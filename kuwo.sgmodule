@@ -1,11 +1,10 @@
-#!name=酷我音乐纯净版会员
-#!desc=酷我音乐会员解锁
+#!name=酷我音乐会员
+#!desc=酷我音乐会员解锁（测试 - 宽松匹配）
 #!author=yingzi
 #!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/kuwosvip.png
-#!homepage=https://whatshub.top
 
 [Script]
-酷我音乐 = type=http-response, pattern=^(?!.*img).*?kuwo\.cn(/vip|/openapi)?(/enc|/audi.tion|/v[\d]/(user/vip\?(vers|apiVersion|platform|op\=ui|_t)|theme\?op=gd|sysinfo\?op=getRePayAndDoPayBoxNew|api(/pay)?/((user/personal/)?user/info|payInfo/kwplayer/payMiniBar|advert/(myPage|iListen|album))|album/(adBar|myRec/vipMusic))|/kuwopay/vip-tab/setting|/(audioApi/)?a\.p($|\?op\=getvip|.*?ptype\=vip)|/mobi\.s\?f\=kwxs|/music\.pay\?newver\=3$|/(EcomResource|(Mobile)?Ad)Serv(er|ice)), script-path=https://kw.sub-domain.workers.dev/kw.js, requires-body=true, timeout=60
+酷我音乐 = type=http-response,pattern=^https?:\/\/([^\/]+\.)?kuwo\.cn\/.*(vip|music\.pay|mobi\.s|kuwopay|audioApi|openapi).*$,script-path=https://raw.githubusercontent.com/chmg2025/script/refs/heads/main/kwcjb.js,requires-body=1,timeout=60
 
 [MITM]
 hostname = %APPEND% *.kuwo.cn
