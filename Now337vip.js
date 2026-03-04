@@ -10,15 +10,15 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 去广告 + 精简我的页面
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
-^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now336vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
 
 # > 去广告
 ^https?://nowapi\.navoinfo\.cn/get/ad_list url reject
@@ -59,17 +59,21 @@ if (obj.result) {
 
 // ========== 精简我的页面（BiliUniverse 风格：数组过滤）==========
 // getUserCenterMenu 接口 - 过滤菜单项
-if (Array.isArray(obj.result)) {
-    // 定义需要移除的标题关键词（扩展列表）
+// 结构: obj.result = [{title: "模块名", list: [{title: "菜单项", tag: 数字}]}]
+
+if (obj.result && Array.isArray(obj.result)) {
+    // 定义需要移除的标题关键词
     const removeKeywords = [
         "分享Now", "广告占位", "我的活动", "每日提醒",
         "去App Store评分", "Apple健康", "意见反馈", 
-        "感恩日记", "兑换码", "15分钟练习计划",
+        "感恩日记", "兑换码", "一万分钟计划",
         "邀请好友", "商城", "推荐", "推广"
     ];
-    const removeTags = [1, 5, 25, 30]; // 广告、分享、活动、提醒
     
-    // 过滤每个模块中的 list
+    // 定义需要移除的 tag
+    const removeTags = [1, 4, 5, 6, 7, 14, 20, 21, 22, 25, 26, 30, 31]; // 广告、反馈、分享、账户、已购课程、兑换码、计划、评分、Apple健康、活动、日记、提醒、订单
+    
+    // 过滤每个模块
     obj.result = obj.result.map(module => {
         if (module.list && Array.isArray(module.list)) {
             module.list = module.list.filter(item => {
@@ -84,8 +88,8 @@ if (Array.isArray(obj.result)) {
                 return true;
             });
         }
-        // 如果模块标题包含"广告"或"推荐"或"推广"，清空整个模块
-        if (module.title && (module.title.includes("广告") || module.title.includes("推荐") || module.title.includes("推广"))) {
+        // 如果模块标题包含"广告"、"推荐"、"推广"，清空整个模块
+        if (module.title && /广告|推荐|推广/.test(module.title)) {
             module.list = [];
         }
         return module;
