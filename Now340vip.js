@@ -10,15 +10,15 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 去广告 + 精简我的页面
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
-^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now339vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
+^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now340vip.js
 
 # > 去广告
 ^https?://nowapi\.navoinfo\.cn/get/ad_list url reject
@@ -56,10 +56,22 @@ if (obj.result) {
     if (obj.result.nickname) obj.result.nickname = "VIP会员";
     if (obj.result.name) obj.result.name = "VIP会员";
     
-    // 隐藏会员中心入口
+    // 隐藏会员中心入口 - getUserInfo 接口
     if (obj.result.now_vip && obj.result.now_vip.center_show) {
         obj.result.now_vip.center_show = "";
     }
+}
+
+// ========== 处理 getUserRightList 接口（对象格式）==========
+// 结构: obj.result = {now_vip: {...}, yoga: {...}, ...}
+if (obj.result && typeof obj.result === 'object' && !Array.isArray(obj.result)) {
+    // 遍历所有权益，隐藏会员中心
+    Object.keys(obj.result).forEach(key => {
+        const item = obj.result[key];
+        if (item && typeof item === 'object' && item.center_show) {
+            item.center_show = "";
+        }
+    });
 }
 
 // ========== 精简我的页面（BiliUniverse 风格：数组过滤）==========
