@@ -60,8 +60,13 @@ if (obj.result) {
 // ========== 精简我的页面（BiliUniverse 风格：数组过滤）==========
 // getUserCenterMenu 接口 - 过滤菜单项
 if (Array.isArray(obj.result)) {
-    // 定义需要移除的标题关键词
-    const removeKeywords = ["分享Now", "广告占位", "我的活动", "每日提醒"];
+    // 定义需要移除的标题关键词（扩展列表）
+    const removeKeywords = [
+        "分享Now", "广告占位", "我的活动", "每日提醒",
+        "去App Store评分", "Apple健康", "意见反馈", 
+        "感恩日记", "兑换码", "15分钟练习计划",
+        "邀请好友", "商城", "推荐", "推广"
+    ];
     const removeTags = [1, 5, 25, 30]; // 广告、分享、活动、提醒
     
     // 过滤每个模块中的 list
@@ -79,8 +84,8 @@ if (Array.isArray(obj.result)) {
                 return true;
             });
         }
-        // 如果模块标题包含"广告"，清空整个模块
-        if (module.title && module.title.includes("广告")) {
+        // 如果模块标题包含"广告"或"推荐"或"推广"，清空整个模块
+        if (module.title && (module.title.includes("广告") || module.title.includes("推荐") || module.title.includes("推广"))) {
             module.list = [];
         }
         return module;
