@@ -1,6 +1,6 @@
 /*
  * 
- * 脚本功能：Now
+ * 脚本功能：Now 正念冥想 App VIP 解锁 + 课程解锁
  * 软件版本：5.1.5
  * 脚本作者：
  * 更新时间：20260304
@@ -10,12 +10,10 @@
  * 
  *******************************
  * [rewrite_local]
- * ^https?://nowapi\.navoinfo\.cn/(h2/(ad/getOpenScreenAd|tool/getAdList|activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Nowvip.js, requires-body=true, timeout=10, tag=NowVIP
- * 
- * ^https?://(sensor|analytics|sysdk|dig)\.(navoinfo\.cn|oceanengine\.com|cl2009\.com|bdurl\.net) url reject
+ * ^https?://nowapi\.navoinfo\.cn/(h2/(activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Nowvip.js, requires-body=true, timeout=10, tag=NowVIP
  * 
  * [mitm]
- * hostname = nowapi.navoinfo.cn, noweocdn.navolove.com, sensor.navoinfo.cn
+ * hostname = nowapi.navoinfo.cn, noweocdn.navolove.com
  * 
  */
 
@@ -45,45 +43,7 @@ try {
     $done({ body });
 }
 
-// ==================== 1. 去广告 ====================
-
-// 开屏广告接口 - 清空广告数据
-if (url.includes('/ad/getOpenScreenAd')) {
-    obj.result = {
-        "id": 0,
-        "title": "",
-        "imgURL": "",
-        "image_url_type": 0,
-        "link_value": 0,
-        "thumb_img": "",
-        "tag": "",
-        "lessionsID": "",
-        "sequence": 0,
-        "display_position": "",
-        "category_type": "",
-        "channel": "",
-        "prohibit_channel": "",
-        "type": "",
-        "pro_type": "",
-        "start_time": "",
-        "end_time": "",
-        "show_level": 0,
-        "is_abtest": 0,
-        "ad_type": 0,
-        "is_click_auto_close": true
-    };
-    log("开屏广告已去除");
-    notify("Now VIP", "", "开屏广告已去除");
-}
-
-// 广告列表接口 - 清空广告数组
-if (url.includes('/tool/getAdList')) {
-    obj.result = [];
-    log("广告列表已清空");
-    notify("Now VIP", "", "广告列表已清空");
-}
-
-// ==================== 2. VIP 解锁 ====================
+// ==================== 1. VIP 配置解锁 ====================
 
 // 应用配置接口 - 强制开启 VIP 相关权限
 if (url.includes('/activity/refreshAppConfig')) {
@@ -91,7 +51,7 @@ if (url.includes('/activity/refreshAppConfig')) {
         // 强制开启 VIP 隐私权限（去广告、VIP 标识等）
         obj.result.auto_vip_privacy_vip = true;        // VIP 标识
         obj.result.auto_vip_privacy_ob = true;         // VIP 权益
-        obj.result.auto_vip_privacy_ad = true;         // 去广告权限
+        obj.result.auto_vip_privacy_ad = true;         // VIP 去广告权限（保留作为VIP权益）
         obj.result.single_privacy_switch = false;
         obj.result.auto_vip_privacy_first_daily_report = true;
         obj.result.sku_switch_reset_privacy_state = false;
@@ -179,9 +139,9 @@ if (url.includes('/search/') || url.includes('/get_sections_list')) {
     log("搜索/章节内容已解锁");
 }
 
-// ==================== 4. 数据上报拦截 ====================
+// ==================== 3. 数据上报拦截 ====================
 
-// 拦截统计和追踪请求
+// 拦截统计和追踪请求（可选，保留以提升隐私）
 if (url.includes('/sensor') || url.includes('analytics') || url.includes('/log/') || url.includes('sensorsdata')) {
     log("已拦截数据上报: " + url);
     $done({ 
