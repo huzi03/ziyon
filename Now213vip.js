@@ -10,10 +10,10 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 课程解锁
-^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now23vip.js
-^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now23vip.js
-^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now23vip.js
-^https?://nowapi\.navoinfo\.cn/get_sections_list url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now23vip.js
+^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now213vip.js
+^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now213vip.js
+^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now213vip.js
+^https?://nowapi\.navoinfo\.cn/get_sections_list url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now213vip.js
 
 [mitm]
 hostname = nowapi.navoinfo.cn
@@ -25,8 +25,11 @@ let body = $response.body;
 
 // VIP 相关字段批量替换
 body = body.replace(/"is_vip":\w+/g, '"is_vip":true');
+body = body.replace(/"is_now_vip":\d+/g, '"is_now_vip":1');
 body = body.replace(/"vip_status":\d+/g, '"vip_status":1');
 body = body.replace(/"vip_type":"\w+"/g, '"vip_type":"permanent"');
+body = body.replace(/"is_forever":\w+/g, '"is_forever":true');
+body = body.replace(/"expire_time":\d+/g, '"expire_time":9999999999');
 body = body.replace(/"has_paid":\w+/g, '"has_paid":true');
 body = body.replace(/"member_type":"\w+"/g, '"member_type":"vip"');
 body = body.replace(/"member_status":"\w+"/g, '"member_status":"active"');
