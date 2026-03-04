@@ -10,7 +10,7 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 课程解锁
-^https?://nowapi\.navoinfo\.cn/(h2/(activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Nowvip.js
+^https?://nowapi\.navoinfo\.cn/(h2/(activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now133vip.js
 
 [mitm]
 hostname = nowapi.navoinfo.cn, noweocdn.navolove.com
