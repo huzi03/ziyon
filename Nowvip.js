@@ -10,7 +10,7 @@
  * 
  *******************************
  * [rewrite_local]
- * ^https?://nowapi\.navoinfo\.cn/(h2/(ad/getOpenScreenAd|tool/getAdList|activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/你的用户名/你的仓库/main/Loon/scripts/now-vip.js, requires-body=true, timeout=10, tag=NowVIP
+ * ^https?://nowapi\.navoinfo\.cn/(h2/(ad/getOpenScreenAd|tool/getAdList|activity/refreshAppConfig|order/getNormalCourseSku)|app_config_info|get_sections_list) url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Nowvip.js, requires-body=true, timeout=10, tag=NowVIP
  * 
  * ^https?://(sensor|analytics|sysdk|dig)\.(navoinfo\.cn|oceanengine\.com|cl2009\.com|bdurl\.net) url reject
  * 
