@@ -10,15 +10,15 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 去广告 + 精简我的页面
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
-^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now337vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
+^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now338vip.js
 
 # > 去广告
 ^https?://nowapi\.navoinfo\.cn/get/ad_list url reject
@@ -67,7 +67,8 @@ if (obj.result && Array.isArray(obj.result)) {
         "分享Now", "广告占位", "我的活动", "每日提醒",
         "去App Store评分", "Apple健康", "意见反馈", 
         "感恩日记", "兑换码", "一万分钟计划",
-        "邀请好友", "商城", "推荐", "推广"
+        "邀请好友", "商城", "推荐", "推广",
+        "会员中心"
     ];
     
     // 定义需要移除的 tag
