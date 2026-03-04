@@ -10,15 +10,15 @@
 *******************************
 [rewrite_local]
 # > Now 正念冥想 VIP解锁 + 去广告 + 精简我的页面
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
-^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now334vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserInfo url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserRightList url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenu url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/h2/user/getUserCenterMenuData url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/app_config_info url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/h2/activity/refreshAppConfig url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/h2/order/getNormalCourseSku url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/get_sections_list.* url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
+^https?://nowapi\.navoinfo\.cn/get_course_details url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/Now335vip.js
 
 # > 去广告
 ^https?://nowapi\.navoinfo\.cn/get/ad_list url reject
@@ -63,9 +63,19 @@ body = body.replace(/"username":"[^"]*"/g, '"username":"VIP会员"');
 body = body.replace(/"nickname":"[^"]*"/g, '"nickname":"VIP会员"');
 body = body.replace(/"name":"[^"]*"/g, '"name":"VIP会员"');
 
-// 精简我的页面 - 移除推广入口（如：邀请好友、商城等）
+// 精简我的页面 - 移除推广入口（如：邀请好友、商城、分享、活动、提醒等）
 body = body.replace(/"inviteCode":"[^"]*"/g, '"inviteCode":""');
 body = body.replace(/"showInvite":\w+/g, '"showInvite":false');
+body = body.replace(/"title":"分享Now"/g, '"title":""');  // 移除分享入口
+body = body.replace(/"title":"广告占位"/g, '"title":""');  // 移除广告模块
+body = body.replace(/"title":"我的活动"/g, '"title":""');  // 移除我的活动
+body = body.replace(/"title":"每日提醒"/g, '"title":""');  // 移除每日提醒
+body = body.replace(/"tag":5/g, '"tag":0');  // 分享标签置空
+body = body.replace(/"tag":1/g, '"tag":0');  // 广告标签置空
+body = body.replace(/"tag":25/g, '"tag":0');  // 活动标签置空
+body = body.replace(/"tag":30/g, '"tag":0');  // 提醒标签置空
+body = body.replace(/"lession_id":"[^"]*"/g, '"lession_id":""');  // 清空推广课程ID
+body = body.replace(/"replace_word":"[^"]*"/g, '"replace_word":""');  // 清空替换词
 
 // VIP 配置字段
 body = body.replace(/"auto_vip_privacy_vip":\w+/g, '"auto_vip_privacy_vip":true');
