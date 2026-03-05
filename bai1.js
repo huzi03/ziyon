@@ -13,7 +13,7 @@
 ^https?://pan\.baidu\.com/act/v1/gamecenter/ url reject
 
 # > 产品配置去广告
-^https?://pan\.baidu\.com/rest/2\.0/membership/product url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/BaiduPanVip.js
+^https?://pan\.baidu\.com/rest/2\.0/membership/product url script-response-body https://raw.githubusercontent.com/huzi03/ziyon/refs/heads/main/bai1.js
 
 # > 去广告
 ^https?://mobads\.baidu\.com/ url reject
